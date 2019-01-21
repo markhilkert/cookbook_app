@@ -16,14 +16,6 @@ class Recipe < ApplicationRecord
   end
 
   def friendly_prep_time
-    # input: integer, stored in prep_time attribute, with reader method. Ex: 125
-    # output: string - "2 Hours, 5 minutes."
-
-    # Find hours within prep_time, by dividing by 60
-    # Find minutes within prep_time, by finding the remainder
-    # Build a message, using the hours and minutes
-      # Only build hours part of the message if there are more than 0 hours
-
     hours = prep_time / 60
     minutes = prep_time % 60
     time_message = ""
