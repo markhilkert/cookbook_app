@@ -21,15 +21,18 @@ class Api::RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(
-                        title: params[:title],
-                        chef: params[:chef],
-                        ingredients: params[:ingredients],
-                        directions: params[:directions],
-                        prep_time: params[:prep_time],
-                        image_url: params[:image_url]
+                          title: params[:title],
+                          chef: params[:chef],
+                          ingredients: params[:ingredients],
+                          directions: params[:directions],
+                          prep_time: params[:prep_time],
+                          image_url: params[:image_url]
                         )
-    @recipe.save                      # Note: using Recipe.create() automatically saves but adds more complications
-    render 'show.json.jbuilder'
+    if @recipe.save
+      render 'show.json.jbuilder'
+    else
+      render json: { errors: @recipe.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def update
