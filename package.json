@@ -1,5 +1,7 @@
 {
   "name": "cookbook_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "vue2-filters": "^0.4.1"
+  }
 }
